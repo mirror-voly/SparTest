@@ -9,15 +9,23 @@ import Foundation
 
 struct StoreItem {
     
-    enum Countries {
-        case france
+    enum Countries: String {
+        case france = "Франция:🇫🇷"
+    }
+    
+    enum Promo: String {
+        case new = "Новинки"
+        case cart = "Цена по карте"
+        case hit = "Удар по ценам"
     }
     
     let title: String
     let importedFrom: Countries?
     let imageName: String
     
-    var promo: String?
+    
+    var promo: Promo?
+    var sale: Int?
     var price: Double
     var oldPrice: Double
     var rating: Double

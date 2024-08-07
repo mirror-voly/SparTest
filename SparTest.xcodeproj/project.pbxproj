@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		516874192C6368020074A51D /* PromoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516874182C6368020074A51D /* PromoItem.swift */; };
 		517179BD2C62614C000B57D5 /* SparTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517179BC2C62614C000B57D5 /* SparTestApp.swift */; };
 		517179BF2C62614C000B57D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517179BE2C62614C000B57D5 /* ContentView.swift */; };
 		517179C12C62614D000B57D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517179C02C62614D000B57D5 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		516874182C6368020074A51D /* PromoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoItem.swift; sourceTree = "<group>"; };
 		517179B92C62614C000B57D5 /* SparTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517179BC2C62614C000B57D5 /* SparTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparTestApp.swift; sourceTree = "<group>"; };
 		517179BE2C62614C000B57D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				517179BC2C62614C000B57D5 /* SparTestApp.swift */,
 				517179E62C6266D0000B57D5 /* StoreItemModel.swift */,
 				517179BE2C62614C000B57D5 /* ContentView.swift */,
+				516874182C6368020074A51D /* PromoItem.swift */,
 				517179E82C626A06000B57D5 /* DataManager.swift */,
 				517179C02C62614D000B57D5 /* Assets.xcassets */,
 				517179C22C62614D000B57D5 /* Preview Content */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516874192C6368020074A51D /* PromoItem.swift in Sources */,
 				517179BF2C62614C000B57D5 /* ContentView.swift in Sources */,
 				517179E92C626A06000B57D5 /* DataManager.swift in Sources */,
 				517179E72C6266D0000B57D5 /* StoreItemModel.swift in Sources */,
