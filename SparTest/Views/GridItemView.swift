@@ -9,10 +9,15 @@ import SwiftUI
 
 struct GridItemView: View {
     
+    let index: Int
     let isVetical: Bool
     let item: StoreItem
     @Environment(DataManager.self) private var dataManager
     private let calculate = Calculate()
+    
+    private func tuggleFavorite() {
+        dataManager.storeItems[index].isFavorite.toggle()
+    }
     
     var body: some View {
         
@@ -28,15 +33,21 @@ struct GridItemView: View {
                                 PromoItem(promo: promo)
                             }
                             Spacer()
-                            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0, content: {
+                            VStack(alignment: .center, spacing: 0, content: {
                                 Group {
                                     Button(action: {
                                     }, label: {
                                         Image("list")
                                     })
                                     Button(action: {
+                                        tuggleFavorite()
                                     }, label: {
-                                        Image("heart")
+                                        if item.isFavorite {
+                                            Image("heart.filled")
+
+                                        } else {
+                                            Image("heart")
+                                        }
                                     })
                                 }.padding(8)
                                 
@@ -186,15 +197,21 @@ struct GridItemView: View {
                         })
                         
                         
-                        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0, content: {
+                        VStack(alignment: .center, spacing: 0, content: {
                             Group {
                                 Button(action: {
                                 }, label: {
                                     Image("list")
                                 })
                                 Button(action: {
+                                    tuggleFavorite()
                                 }, label: {
-                                    Image("heart")
+                                    if item.isFavorite {
+                                        Image("heart.filled")
+
+                                    } else {
+                                        Image("heart")
+                                    }
                                 })
                             }.padding(8)
                                 Spacer()

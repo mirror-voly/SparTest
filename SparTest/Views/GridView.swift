@@ -19,8 +19,8 @@ struct GridView: View {
         
         ScrollView(.vertical) {
             LazyVGrid(columns: grid, spacing: 8,  content: {
-                ForEach(dataManager.storeItems) { item in
-                    GridItemView(isVetical: true, item: item)
+                ForEach(Array(dataManager.storeItems.enumerated()), id: \.element) { index, item in
+                    GridItemView(index: index, isVetical: true, item: item)
                 }
             })
             .padding(.horizontal)

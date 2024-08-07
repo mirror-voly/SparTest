@@ -14,8 +14,8 @@ struct ListView: View {
     var body: some View {
         
         ScrollView(.vertical) {
-            ForEach(dataManager.storeItems) { item in
-                GridItemView(isVetical: false, item: item)
+            ForEach(Array(dataManager.storeItems.enumerated()), id: \.element) { index, item in
+                GridItemView(index: index, isVetical: false, item: item)
                     .padding(.horizontal)
                 Divider()
             }
