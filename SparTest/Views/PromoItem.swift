@@ -21,6 +21,7 @@ struct PromoItem: View {
             case .cart: Color.promoGreen
             }
         }()
+        
         HStack(spacing:-10, content: {
                 Rectangle()
                     .fill(color)
