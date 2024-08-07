@@ -46,8 +46,28 @@ struct ContentView: View {
                                 Image(item.imageName)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 VStack(alignment: .leading) {
-                                    if let promo = item.promo {
-                                        PromoItem(promo: promo)
+                                        
+                                    HStack(alignment: .top) {
+                                        if let promo = item.promo {
+                                            PromoItem(promo: promo)
+                                        }
+                                        Spacer()
+                                        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                                            Group {
+                                                Button(action: {
+                                                }, label: {
+                                                    Image("list")
+                                                })
+                                                Button(action: {
+                                                }, label: {
+                                                    Image("heart")
+                                                })
+                                            }.padding(8)
+                                            
+                                        })
+                                        .background(Color.white.opacity(0.8))
+                                        .clipShape(.rect(cornerRadius: 20))
+                                        .padding(.top, 2)
                                     }
                                     Spacer()
                                     HStack(spacing: 2, content: {
@@ -58,6 +78,11 @@ struct ContentView: View {
                                             .frame(width: 16, height: 16)
                                         Text(String(item.rating))
                                             .font(.system(size: 12))
+                                        Spacer()
+                                        if let sale = item.sale {
+                                            Text(String(sale) + "%")
+                                                .foregroundStyle(Color.sale)
+                                        }
                                     })
                                     .padding(.horizontal, 5)
                                 }
@@ -76,8 +101,7 @@ struct ContentView: View {
                                         Text(separatedFrom.last!)
                                             .font(.system(size: 12))
                                     }
-                                    .padding(.top, 2)
-                                    
+                                    .padding(.top, 2) 
                                 }
                                 Spacer()
                                 HStack(content: {
@@ -96,6 +120,7 @@ struct ContentView: View {
                                         })
                                         .frame(height: 22)
                                         Text(convertToSrting(price: item.oldPrice))
+                                            .colorMultiply(Color.icons.opacity(0.6))
                                             .font(.system(size: 12))
                                             .strikethrough()
                                     })
