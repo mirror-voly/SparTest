@@ -19,5 +19,6 @@ struct BusketItem {
     var amount: Double
     var units: Unit
     
+    let id: UUID
     
 }

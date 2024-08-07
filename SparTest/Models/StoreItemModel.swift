@@ -7,8 +7,11 @@
 
 import Foundation
 
-struct StoreItem {
+struct StoreItem: Identifiable, Hashable {
     
+    let id = UUID()
+    
+
     enum Countries: String {
         case france = "Франция:🇫🇷"
     }
@@ -36,10 +39,3 @@ struct StoreItem {
        
 }
 
-extension StoreItem: Hashable, Identifiable {
-    
-    var id: UUID {
-        UUID()
-    }
- 
-}

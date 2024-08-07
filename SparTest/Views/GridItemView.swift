@@ -12,6 +12,8 @@ struct GridItemView: View {
     let index: Int
     let isVetical: Bool
     let item: StoreItem
+    @State var counter: Double = 0.1
+    @State var inBucket = false
     @Environment(DataManager.self) private var dataManager
     private let calculate = Calculate()
     
@@ -44,13 +46,11 @@ struct GridItemView: View {
                                     }, label: {
                                         if item.isFavorite {
                                             Image("heart.filled")
-
                                         } else {
                                             Image("heart")
                                         }
                                     })
                                 }.padding(8)
-                                
                             })
                             .background(Color.white.opacity(0.8))
                             .clipShape(.rect(cornerRadius: 20))
@@ -83,46 +83,97 @@ struct GridItemView: View {
                     if let from = item.importedFrom {
                         let separatedFrom = calculate.separatStringsWithFlag(inputString: from.rawValue)
                         HStack(spacing: 2) {
-                            Text(separatedFrom.first!)
+                            Text(separatedFrom.first ?? "")
                                 .font(.system(size: 12))
                                 .colorMultiply(Color.icons.opacity(0.6))
-                            Text(separatedFrom.last!)
+                            Text(separatedFrom.last ?? "")
                                 .font(.system(size: 12))
                         }
                         .padding(.top, 2)
                     }
                     Spacer()
                     HStack(content: {
-                        VStack(alignment: .leading, content: {
-                            let separetedPrice = calculate.convertToArray(price: item.price)
-                            HStack(alignment: .center, spacing: 2, content:  {
-                                Text(separetedPrice.first ?? "")
-                                    .font(.system(size: 20))
-                                    .bold()
-                                Text(separetedPrice.last ?? "")
-                                    .font(.system(size: 16))
-                                    .bold()
-                                Image("perAmountIcon")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
+                        if !inBucket {
+                            VStack(alignment: .leading, content: {
+                                let separetedPrice = calculate.convertToArray(price: item.price)
+                                HStack(alignment: .center, spacing: 2, content:  {
+                                    Text(separetedPrice.first ?? "")
+                                        .font(.system(size: 20))
+                                        .bold()
+                                    Text(separetedPrice.last ?? "")
+                                        .font(.system(size: 16))
+                                        .bold()
+                                    Image("perAmountIcon")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                })
+                                .frame(height: 22)
+                                Text(calculate.convertToSrting(price: item.oldPrice))
+                                    .colorMultiply(Color.icons.opacity(0.6))
+                                    .font(.system(size: 12))
+                                    .strikethrough()
                             })
-                            .frame(height: 22)
-                            Text(calculate.convertToSrting(price: item.oldPrice))
-                                .colorMultiply(Color.icons.opacity(0.6))
-                                .font(.system(size: 12))
-                                .strikethrough()
-                        })
-                        Spacer()
-                        Button(action: {
-//                            dataManager.busket.append(BusketItem(title: item.title, price: item.price, amount: 10, units: .piece))
-                        }, label: {
-                            Image("basket")
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 10)
-                        })
-                        .background(Color.primaryButton)
-                        .clipShape(.rect(cornerRadius: 40))
-                        
+                            Spacer()
+                            Button(action: {
+                                dataManager.busket.append(BusketItem(title: item.title, price: item.price, amount: 0.1, units: .piece, id: item.id))
+                                if dataManager.busket.first(where: { $0.id == item.id }) != nil {
+                                    print("yep")
+                                    inBucket = true
+                                }
+                            }, label: {
+                                Image("basket")
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 10)
+                            })
+                            .background(Color.primaryButton)
+                            .clipShape(.rect(cornerRadius: 40))
+                        } else {
+                            HStack {
+                                Button(action: {
+                                    counter -= 0.1
+                                    if let index = dataManager.busket.firstIndex(where: { $0.id == item.id }) {
+                                        dataManager.busket.remove(at: index)
+                                        dataManager.busket.append(BusketItem(title: item.title, price: item.price, amount: counter, units: .piece, id: item.id))
+                                    }
+                                }, label: {
+                                    Text("-")
+                                        .foregroundStyle(Color.white)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                        .font(.system(size: 25))
+                                        .bold()
+                                })
+                                .frame(width: 40, height: 36, alignment: .center)
+                                let formattedString = String(format: "%.1f", counter)
+                                VStack {
+                                    Text(String(formattedString) + " Кг")
+                                        .foregroundStyle(Color.white)
+                                        .padding(.vertical, 10)
+                                        .font(.system(size: 16))
+                                    
+                                }
+                                .frame(maxWidth: .infinity)
+                                
+                                Button(action: {
+                                    counter += 0.1
+                                    if let index = dataManager.busket.firstIndex(where: { $0.id == item.id }) {
+                                        dataManager.busket.remove(at: index)
+                                        dataManager.busket.append(BusketItem(title: item.title, price: item.price, amount: counter, units: .piece, id: item.id))
+                                    }
+                                }, label: {
+                                    Text("+")
+                                        .foregroundStyle(Color.white)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                        .font(.system(size: 25))
+                                        .bold()
+                                })
+                                .frame(width: 40, height: 36, alignment: .center)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .background(Color.primaryButton)
+                            .clipShape(.rect(cornerRadius: 20))
+                            
+                            
+                        }
                     })
                     .frame(maxWidth: .infinity)
                 })
@@ -155,7 +206,8 @@ struct GridItemView: View {
                                     .foregroundStyle(Color.sale)
                             }
                         })
-                    }.frame(width: 144, height: 144)
+                    }
+                    .frame(width: 144, height: 144)
                 })
                 .frame(width: 144, height: 144)
                 .clipShape(.rect(cornerRadius: 8))
