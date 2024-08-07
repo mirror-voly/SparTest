@@ -15,7 +15,7 @@ struct GridItemView: View {
     @Environment(DataManager.self) private var dataManager
     private let calculate = Calculate()
     
-    private func tuggleFavorite() {
+    private func toggleFavorite() {
         dataManager.storeItems[index].isFavorite.toggle()
     }
     
@@ -40,7 +40,7 @@ struct GridItemView: View {
                                         Image("list")
                                     })
                                     Button(action: {
-                                        tuggleFavorite()
+                                        toggleFavorite()
                                     }, label: {
                                         if item.isFavorite {
                                             Image("heart.filled")
@@ -204,7 +204,7 @@ struct GridItemView: View {
                                     Image("list")
                                 })
                                 Button(action: {
-                                    tuggleFavorite()
+                                    toggleFavorite()
                                 }, label: {
                                     if item.isFavorite {
                                         Image("heart.filled")
