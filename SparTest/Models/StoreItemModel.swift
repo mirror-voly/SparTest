@@ -37,9 +37,9 @@ struct StoreItem {
 }
 
 extension StoreItem: Hashable, Identifiable {
+    
     var id: UUID {
         UUID()
     }
-    
-    
+ 
 }
