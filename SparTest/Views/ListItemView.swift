@@ -35,6 +35,15 @@ struct ListItemView: View {
         dataManager.busket.append(BusketItem(id: item.id, title: item.title, price: item.price, amount: counter, unit: item.unit))
     }
     
+    private func isCounterPositive() {
+        if counter > 0.1 {
+            updateBusket()
+        } else {
+            removeItemFromBusket()
+            bucketIsNotEmpty = false
+        }
+    }
+    
     var body: some View {
         
         HStack(alignment: .center, content: {
@@ -118,37 +127,114 @@ struct ListItemView: View {
                 })
                 
                 HStack(spacing: -2, content: {
-                    VStack(alignment: .leading, content: {
-                        let separetedPrice = calculate.convertToArray(price: item.price)
-                        HStack(alignment: .center, spacing: 2, content:  {
-                            Text(separetedPrice.first ?? "")
-                                .font(.system(size: 20))
-                                .bold()
-                            Text(separetedPrice.last ?? "")
-                                .font(.system(size: 16))
-                                .bold()
-                            Image("perAmountIcon")
-                                .resizable()
-                                .frame(width: 20, height: 20)
+                    if !bucketIsNotEmpty {
+                        VStack(alignment: .leading, content: {
+                            let separetedPrice = calculate.convertToArray(price: item.price)
+                            HStack(alignment: .center, spacing: 2, content:  {
+                                Text(separetedPrice.first ?? "")
+                                    .font(.system(size: 20))
+                                    .bold()
+                                Text(separetedPrice.last ?? "")
+                                    .font(.system(size: 16))
+                                    .bold()
+                                Image("perAmountIcon")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                            })
+                            .frame(height: 22)
+                            Text(calculate.convertToSrting(price: item.oldPrice))
+                                .colorMultiply(Color.icons.opacity(0.6))
+                                .font(.system(size: 12))
+                                .strikethrough()
                         })
-                        .frame(height: 22)
-                        Text(calculate.convertToSrting(price: item.oldPrice))
-                            .colorMultiply(Color.icons.opacity(0.6))
-                            .font(.system(size: 12))
-                            .strikethrough()
-                    })
-                    Spacer()
-                    Button(action: {
-                        calculate.changeCounter(isAdding: true, counter: &counter, unit: item.unit)
-                        updateBusket()
-                        cheсkBusket()
-                    }, label: {
-                        Image("basket")
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                    })
-                    .background(Color.primaryButton)
-                    .clipShape(.rect(cornerRadius: 40))
+                        Spacer()
+                        Button(action: {
+                            calculate.changeCounter(isAdding: true, counter: &counter, unit: item.unit)
+                            updateBusket()
+                            cheсkBusket()
+                        }, label: {
+                            Image("basket")
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 10)
+                        })
+                        .background(Color.primaryButton)
+                        .clipShape(.rect(cornerRadius: 40))
+                    } else {
+                        HStack {
+                            Button(action: {
+                                calculate.changeCounter(isAdding: false, counter: &counter, unit: item.unit)
+                                isCounterPositive()
+                            }, label: {
+                                Text("-")
+                                    .foregroundStyle(Color.white)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .font(.system(size: 25))
+                                    .bold()
+                            })
+                            .frame(width: 40, height: 36, alignment: .center)
+                            VStack {
+                                let preparedCounterString = calculate.prepareCounter(counter: counter, unit: item.unit)
+                                let preparedPriceString = calculate.preparePrice(counter: counter, price: item.price)
+                                Text(preparedCounterString + " " + item.unit.rawValue)
+                                    .foregroundStyle(Color.white)
+                                    .font(.system(size: 16))
+                                    .bold()
+                                Text("~" + preparedPriceString + " ₽")
+                                    .foregroundStyle(Color.white)
+                                    .font(.system(size: 12))
+                                    .lineLimit(1)
+                                    .frame(maxWidth: .infinity)
+                                    .minimumScaleFactor(0.5)
+                            }
+                            .frame(maxWidth: .infinity)
+                            
+                            Button(action: {
+                                calculate.changeCounter(isAdding: true, counter: &counter, unit: item.unit)
+                                updateBusket()
+                            }, label: {
+                                Text("+")
+                                    .foregroundStyle(Color.white)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .font(.system(size: 25))
+                                    .bold()
+                            })
+                            .frame(width: 40, height: 36, alignment: .center)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color.primaryButton)
+                        .clipShape(.rect(cornerRadius: 20))
+                    }
+//                    VStack(alignment: .leading, content: {
+//                        let separetedPrice = calculate.convertToArray(price: item.price)
+//                        HStack(alignment: .center, spacing: 2, content:  {
+//                            Text(separetedPrice.first ?? "")
+//                                .font(.system(size: 20))
+//                                .bold()
+//                            Text(separetedPrice.last ?? "")
+//                                .font(.system(size: 16))
+//                                .bold()
+//                            Image("perAmountIcon")
+//                                .resizable()
+//                                .frame(width: 20, height: 20)
+//                        })
+//                        .frame(height: 22)
+//                        Text(calculate.convertToSrting(price: item.oldPrice))
+//                            .colorMultiply(Color.icons.opacity(0.6))
+//                            .font(.system(size: 12))
+//                            .strikethrough()
+//                    })
+//                    Spacer()
+//                    Button(action: {
+//                        calculate.changeCounter(isAdding: true, counter: &counter, unit: item.unit)
+//                        updateBusket()
+//                        cheсkBusket()
+//                    }, label: {
+//                        Image("basket")
+//                            .padding(.horizontal, 14)
+//                            .padding(.vertical, 10)
+//                    })
+//                    .background(Color.primaryButton)
+//                    .clipShape(.rect(cornerRadius: 40))
                 })
                 .frame(height: 36)
             })
