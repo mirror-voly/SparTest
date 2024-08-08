@@ -20,9 +20,25 @@ struct Calculate {
         return stringArray
     }
     
-    func separatStringsWithFlag(inputString: String) -> [String] {
+    func separateStringsWithFlag(inputString: String) -> [String] {
         let strings = inputString.components(separatedBy: ":")
         return strings
     }
     
+    func changeCounter(isAdding: Bool, counter: inout Double, unit: StoreItem.UnitType) {
+        let changeValue: Double = unit == .weight ? 0.1 : 1.0
+        counter += isAdding ? changeValue : -changeValue
+    }
+    
+    func prepareCounter(counter: Double, unit: StoreItem.UnitType) -> String {
+        let formattedCouterString = String(format: "%.1f", counter)
+        let preparedCounter = unit == .weight ? formattedCouterString : String(Int(counter))
+        return preparedCounter
+    }
+    
+    func preparePrice(counter: Double, price: Double) -> String {
+        let price = counter * price
+        let formattedPriceString = String(format: "%.2f", price)
+        return formattedPriceString
+    }
 }

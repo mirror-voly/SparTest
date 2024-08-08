@@ -9,16 +9,11 @@ import Foundation
 
 struct BusketItem {
     
-    enum Unit: String {
-        case weight = "Кг"
-        case piece = "Шт"
-    }
-    
+    let id: UUID
     let title: String
     let price: Double
     var amount: Double
-    var units: Unit
+    var unit: StoreItem.UnitType
     
-    let id: UUID
     
 }

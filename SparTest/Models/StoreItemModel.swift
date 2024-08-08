@@ -12,7 +12,7 @@ struct StoreItem: Identifiable, Hashable {
     let id = UUID()
     
 
-    enum Countries: String {
+    enum Countri: String {
         case france = "Франция:🇫🇷"
     }
     
@@ -22,10 +22,15 @@ struct StoreItem: Identifiable, Hashable {
         case hit = "Удар по ценам"
     }
     
-    let title: String
-    let importedFrom: Countries?
-    let imageName: String
+    enum UnitType: String {
+        case weight = "Кг"
+        case piece = "Шт"
+    }
     
+    let title: String
+    let importedFrom: Countri?
+    let imageName: String
+    let unit: UnitType
     
     var promo: Promo?
     var sale: Int?
