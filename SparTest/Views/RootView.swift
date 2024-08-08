@@ -46,22 +46,6 @@ struct RootView: View {
             })
            
         }
-        .onAppear {
-            let familyNames = UIFont.familyNames
-            
-            // Перебираем каждое семейство шрифтов
-            for family in familyNames {
-                print("Font Family: \(family)")
-                
-                // Получаем имена шрифтов для текущего семейства
-                let fontNames = UIFont.fontNames(forFamilyName: family)
-                
-                // Перебираем и выводим имена шрифтов
-                for fontName in fontNames {
-                    print("  Font Name: \(fontName)")
-                }
-            }
-        }
         
     }
 }
