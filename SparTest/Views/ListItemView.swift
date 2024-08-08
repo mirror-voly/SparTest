@@ -22,6 +22,9 @@ struct ListItemView: View {
     
     private func cheсkBusket() {
         bucketIsNotEmpty = dataManager.busket.contains(where: { $0.id == item.id })
+        if let index = dataManager.busket.firstIndex(where: { $0.id == item.id }) {
+            counter = dataManager.busket[index].amount
+        }
     }
     
     private func removeItemFromBusket() {
@@ -42,6 +45,10 @@ struct ListItemView: View {
             removeItemFromBusket()
             bucketIsNotEmpty = false
         }
+    }
+    
+    private func isBucketEmpty() {
+        bucketIsNotEmpty = true
     }
     
     var body: some View {
@@ -204,43 +211,15 @@ struct ListItemView: View {
                         .background(Color.primaryButton)
                         .clipShape(.rect(cornerRadius: 20))
                     }
-//                    VStack(alignment: .leading, content: {
-//                        let separetedPrice = calculate.convertToArray(price: item.price)
-//                        HStack(alignment: .center, spacing: 2, content:  {
-//                            Text(separetedPrice.first ?? "")
-//                                .font(.system(size: 20))
-//                                .bold()
-//                            Text(separetedPrice.last ?? "")
-//                                .font(.system(size: 16))
-//                                .bold()
-//                            Image("perAmountIcon")
-//                                .resizable()
-//                                .frame(width: 20, height: 20)
-//                        })
-//                        .frame(height: 22)
-//                        Text(calculate.convertToSrting(price: item.oldPrice))
-//                            .colorMultiply(Color.icons.opacity(0.6))
-//                            .font(.system(size: 12))
-//                            .strikethrough()
-//                    })
-//                    Spacer()
-//                    Button(action: {
-//                        calculate.changeCounter(isAdding: true, counter: &counter, unit: item.unit)
-//                        updateBusket()
-//                        cheсkBusket()
-//                    }, label: {
-//                        Image("basket")
-//                            .padding(.horizontal, 14)
-//                            .padding(.vertical, 10)
-//                    })
-//                    .background(Color.primaryButton)
-//                    .clipShape(.rect(cornerRadius: 40))
                 })
                 .frame(height: 36)
             })
             .padding(.horizontal, 8)
             .padding(.bottom, 5)
     })
+        .onAppear(perform: {
+            cheсkBusket()
+        })
         .padding(.horizontal, -2)
         .padding(.vertical)
         .frame(maxWidth: .infinity, maxHeight: 176)

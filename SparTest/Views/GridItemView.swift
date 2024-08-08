@@ -22,6 +22,9 @@ struct GridItemView: View {
     
     private func cheсkBusket() {
         bucketIsNotEmpty = dataManager.busket.contains(where: { $0.id == item.id })
+        if let index = dataManager.busket.firstIndex(where: { $0.id == item.id }) {
+            counter = dataManager.busket[index].amount
+        }
     }
     
     private func removeItemFromBusket() {
@@ -185,6 +188,7 @@ struct GridItemView: View {
                                 })
                                 .frame(width: 40, height: 36, alignment: .center)
                             }
+                            
                             .frame(maxWidth: .infinity)
                             .background(Color.primaryButton)
                             .clipShape(.rect(cornerRadius: 20))
@@ -194,6 +198,9 @@ struct GridItemView: View {
                 })
                 .padding(.horizontal, 8)
                 .padding(.bottom, 5)
+            })
+            .onAppear(perform: {
+                cheсkBusket()
             })
             .background(Color.white)
             .clipShape(.rect(cornerRadius: 20))
