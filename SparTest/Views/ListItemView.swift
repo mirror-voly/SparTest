@@ -139,10 +139,10 @@ struct ListItemView: View {
                             let separetedPrice = calculate.convertToArray(price: item.price)
                             HStack(alignment: .center, spacing: 2, content:  {
                                 Text(separetedPrice.first ?? "")
-                                    .font(.system(size: 20))
+                                    .font(.custom("FONTSPRINGDEMO-CeraRoundProRegular", size: 20))
                                     .bold()
                                 Text(separetedPrice.last ?? "")
-                                    .font(.system(size: 16))
+                                    .font(.custom("FONTSPRINGDEMO-CeraRoundProRegular", size: 16))
                                     .bold()
                                 Image("perAmountIcon")
                                     .resizable()

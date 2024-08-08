@@ -13,6 +13,12 @@
 		516874242C6395210074A51D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516874232C6395210074A51D /* ListView.swift */; };
 		516874262C63959A0074A51D /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516874252C63959A0074A51D /* Calculate.swift */; };
 		5170B1C32C6490E7005E9372 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170B1C22C6490E7005E9372 /* ListItemView.swift */; };
+		5170B1CB2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5170B1C52C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-thin.otf */; };
+		5170B1CC2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5170B1C62C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-bold.otf */; };
+		5170B1CD2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5170B1C72C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-medium.otf */; };
+		5170B1CE2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5170B1C82C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-light.otf */; };
+		5170B1CF2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5170B1C92C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-regular.otf */; };
+		5170B1D02C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5170B1CA2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-black.otf */; };
 		517179BD2C62614C000B57D5 /* SparTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517179BC2C62614C000B57D5 /* SparTestApp.swift */; };
 		517179BF2C62614C000B57D5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517179BE2C62614C000B57D5 /* RootView.swift */; };
 		517179C12C62614D000B57D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517179C02C62614D000B57D5 /* Assets.xcassets */; };
@@ -49,6 +55,13 @@
 		516874232C6395210074A51D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		516874252C63959A0074A51D /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		5170B1C22C6490E7005E9372 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		5170B1C52C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fontspring-DEMO-ceraroundpro-thin.otf"; sourceTree = "<group>"; };
+		5170B1C62C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fontspring-DEMO-ceraroundpro-bold.otf"; sourceTree = "<group>"; };
+		5170B1C72C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fontspring-DEMO-ceraroundpro-medium.otf"; sourceTree = "<group>"; };
+		5170B1C82C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fontspring-DEMO-ceraroundpro-light.otf"; sourceTree = "<group>"; };
+		5170B1C92C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fontspring-DEMO-ceraroundpro-regular.otf"; sourceTree = "<group>"; };
+		5170B1CA2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fontspring-DEMO-ceraroundpro-black.otf"; sourceTree = "<group>"; };
+		5170B1D12C64A100005E9372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		517179B92C62614C000B57D5 /* SparTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517179BC2C62614C000B57D5 /* SparTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparTestApp.swift; sourceTree = "<group>"; };
 		517179BE2C62614C000B57D5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -120,6 +133,19 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5170B1C42C64A08F005E9372 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5170B1CA2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-black.otf */,
+				5170B1C62C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-bold.otf */,
+				5170B1C82C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-light.otf */,
+				5170B1C72C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-medium.otf */,
+				5170B1C92C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-regular.otf */,
+				5170B1C52C64A0BE005E9372 /* Fontspring-DEMO-ceraroundpro-thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		517179B02C62614B000B57D5 = {
 			isa = PBXGroup;
 			children = (
@@ -143,10 +169,12 @@
 		517179BB2C62614C000B57D5 /* SparTest */ = {
 			isa = PBXGroup;
 			children = (
+				5170B1D12C64A100005E9372 /* Info.plist */,
 				517179BC2C62614C000B57D5 /* SparTestApp.swift */,
 				5168741C2C638FDF0074A51D /* Models */,
 				5168741D2C6390070074A51D /* Views */,
 				5168741E2C6390190074A51D /* Helpers */,
+				5170B1C42C64A08F005E9372 /* Fonts */,
 				517179C02C62614D000B57D5 /* Assets.xcassets */,
 				517179C22C62614D000B57D5 /* Preview Content */,
 			);
@@ -282,8 +310,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5170B1CD2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-medium.otf in Resources */,
+				5170B1CF2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-regular.otf in Resources */,
+				5170B1CB2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-thin.otf in Resources */,
 				517179C42C62614D000B57D5 /* Preview Assets.xcassets in Resources */,
+				5170B1D02C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-black.otf in Resources */,
+				5170B1CE2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-light.otf in Resources */,
 				517179C12C62614D000B57D5 /* Assets.xcassets in Resources */,
+				5170B1CC2C64A0BF005E9372 /* Fontspring-DEMO-ceraroundpro-bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +518,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SparTest/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SparTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -512,6 +547,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SparTest/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SparTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
