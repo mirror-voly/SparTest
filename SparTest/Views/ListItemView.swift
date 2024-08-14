@@ -96,7 +96,9 @@ struct ListItemView: View {
                         })
                         Text(item.title)
                             .font(.system(size: 12))
-                            .lineLimit(0)
+                            .lineLimit(2)
+                            .frame(height: 30)
+                        
                         if let from = item.importedFrom {
                             let separatedFrom = calculate.separateStringsWithFlag(inputString: from.rawValue)
                             HStack(spacing: 2) {
